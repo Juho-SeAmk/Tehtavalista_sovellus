@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Household Tasks Planner (LLM-assisted)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="container">
+      <div class="card">
+        <header class="header">
+          <h1>Household Tasks &amp; Reminders</h1>
+        </header>
+        <p class="description">Enter tasks separated by commas, then press <strong>Create weekly plan</strong>.</p>
+
+        <form method="POST">
+            <label for="tasks">Enter tasks (separate with commas):</label>
+            <textarea name="tasks" rows="5" cols="50" placeholder="e.g., dishes, vacuum, laundry, grocery shopping"></textarea>
+            <input type="submit" value="Create weekly plan">
+            <p style="margin:8px 0 0;color:#6b7280;font-size:0.9rem">Example: dishes, vacuum, laundry, take out trash, grocery shopping</p>
+        </form>
+
+        {% if result %}
+        <div class="result-area">
+          <h2>AI Suggestions:</h2>
+          <pre>{{ result }}</pre>
+        </div>
+        {% endif %}
+      </div>
+    </main>
+</body>
+</html>
